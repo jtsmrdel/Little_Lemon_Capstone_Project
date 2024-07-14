@@ -7,17 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B4A07A62C44608700C6F9DC /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4A07A52C44608700C6F9DC /* UserProfile.swift */; };
+		6B52AC2F2C432C040031C798 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B52AC2E2C432C040031C798 /* Onboarding.swift */; };
+		6B52AC312C43422C0031C798 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B52AC302C43422C0031C798 /* Home.swift */; };
+		6B52AC332C4342560031C798 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B52AC322C4342560031C798 /* Menu.swift */; };
 		6B64BD6E2C3074AA004CA5E1 /* LittleLemonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B64BD6D2C3074AA004CA5E1 /* LittleLemonApp.swift */; };
-		6B64BD702C3074AA004CA5E1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B64BD6F2C3074AA004CA5E1 /* ContentView.swift */; };
 		6B64BD722C3074AA004CA5E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B64BD712C3074AA004CA5E1 /* Item.swift */; };
 		6B64BD742C3074AC004CA5E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B64BD732C3074AC004CA5E1 /* Assets.xcassets */; };
 		6B64BD772C3074AC004CA5E1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B64BD762C3074AC004CA5E1 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B4A07A52C44608700C6F9DC /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		6B52AC2E2C432C040031C798 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		6B52AC302C43422C0031C798 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		6B52AC322C4342560031C798 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		6B64BD6A2C3074AA004CA5E1 /* LittleLemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleLemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B64BD6D2C3074AA004CA5E1 /* LittleLemonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LittleLemonApp.swift; sourceTree = "<group>"; };
-		6B64BD6F2C3074AA004CA5E1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6B64BD712C3074AA004CA5E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6B64BD732C3074AC004CA5E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B64BD762C3074AC004CA5E1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -54,10 +60,13 @@
 			isa = PBXGroup;
 			children = (
 				6B64BD6D2C3074AA004CA5E1 /* LittleLemonApp.swift */,
-				6B64BD6F2C3074AA004CA5E1 /* ContentView.swift */,
 				6B64BD712C3074AA004CA5E1 /* Item.swift */,
 				6B64BD732C3074AC004CA5E1 /* Assets.xcassets */,
 				6B64BD752C3074AC004CA5E1 /* Preview Content */,
+				6B52AC2E2C432C040031C798 /* Onboarding.swift */,
+				6B52AC302C43422C0031C798 /* Home.swift */,
+				6B52AC322C4342560031C798 /* Menu.swift */,
+				6B4A07A52C44608700C6F9DC /* UserProfile.swift */,
 			);
 			path = LittleLemon;
 			sourceTree = "<group>";
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B64BD702C3074AA004CA5E1 /* ContentView.swift in Sources */,
 				6B64BD722C3074AA004CA5E1 /* Item.swift in Sources */,
 				6B64BD6E2C3074AA004CA5E1 /* LittleLemonApp.swift in Sources */,
+				6B4A07A62C44608700C6F9DC /* UserProfile.swift in Sources */,
+				6B52AC312C43422C0031C798 /* Home.swift in Sources */,
+				6B52AC2F2C432C040031C798 /* Onboarding.swift in Sources */,
+				6B52AC332C4342560031C798 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
