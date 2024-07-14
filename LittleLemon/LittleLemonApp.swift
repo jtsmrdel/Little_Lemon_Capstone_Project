@@ -25,7 +25,7 @@ struct LittleLemonApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Onboarding()
         }
         .modelContainer(sharedModelContainer)
     }
