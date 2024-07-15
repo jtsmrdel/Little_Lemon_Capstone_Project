@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Home: View {
+    let persistence = PersistenceController.shared
+    
     var body: some View {
         TabView {
             Menu()
@@ -17,6 +19,7 @@ struct Home: View {
                         systemImage: "list.dash"
                     )
                 }
+                .environment(\.managedObjectContext, persistence.container.viewContext)
             UserProfile()
                 .tabItem {
                     Label(
