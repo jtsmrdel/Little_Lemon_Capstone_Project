@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct LittleLemonApp: App {
+    
+    let persistence = PersistenceController.shared
+    
+    @State var userStateManager = UserStateManager()
+    
     var body: some Scene {
         WindowGroup {
-            Onboarding()
+            RootView()
+                .environment(\.managedObjectContext, persistence.container.viewContext)
+                .environment(userStateManager)
         }
     }
 }
