@@ -19,12 +19,35 @@ struct DishDetails: View {
             } placeholder: {
                 ProgressView()
             }
-            Text(dish.desc ?? "")
+            
+            Text(dish.title ?? "[title]")
+                .font(.title)
+            
+            Text(dish.desc ?? "[description")
                 .padding(.horizontal)
+            
             Text(dish.price.toCurrency)
                 .padding(.vertical)
+            
             Spacer()
         }
-        .navigationTitle(dish.title ?? "")
+        .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                BackButton()
+            }
+            ToolbarItem(placement: .principal) {
+                topBar
+            }
+        }
+    }
+    
+    private var topBar: some View {
+        Image(.littleLemonLogo)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 35)
+            .padding()
     }
 }

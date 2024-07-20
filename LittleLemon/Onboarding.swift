@@ -7,69 +7,106 @@
 
 import SwiftUI
 
-let kFirstName = "first name key"
-let kLastName = "last name key"
-let kEmail = "email key"
-let kIsLoggedIn = "kIsLoggedIn"
-
 struct Onboarding: View {
     
-    @State var firstName = ""
-    @State var lastName = ""
-    @State var email = ""
-    @State var isLoggedIn = false
+    @State var selectProfileImage = false
+    @State var hasError = false
+    @State var errorMessage = ""
+    
+    @State var user = User()
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .center) {
-                TextField("First Name", text: $firstName)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(.rect(cornerRadius: 12))
-                    .padding(.horizontal)
-                TextField("Last Name", text: $lastName)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(.rect(cornerRadius: 12))
-                    .padding(.horizontal)
-                TextField("Email", text: $email)
-                    .padding()
-                    .background(Color(.secondarySystemBackground))
-                    .clipShape(.rect(cornerRadius: 12))
-                    .padding(.horizontal)
-                Button {
-                    if !firstName.isEmpty && !lastName.isEmpty && !email.isEmpty {
-                        UserDefaults.standard.set(firstName, forKey: kFirstName)
-                        UserDefaults.standard.set(lastName, forKey: kLastName)
-                        UserDefaults.standard.set(email, forKey: kEmail)
-                        UserDefaults.standard.set(true, forKey: kIsLoggedIn)
-                        isLoggedIn = true
-                    } else if !email.contains("@") {
-                        debugPrint("Invalid email")
-                    } else {
-                        debugPrint("First and Last Name are required")
-                    }
-                } label: {
-                    Text("Register")
-                        .font(.system(size: 20))
-                        .foregroundStyle(.black)
-                        .frame(maxWidth: .infinity)
-                        .contentShape(Rectangle())
+            ScrollView {
+                HeroSection()
+                VStack {
+                    personalInfoTextFields
+                    nextButton
+                    Spacer()
                 }
-                .padding(.vertical)
-                .frame(maxWidth: .infinity)
-                .background(Color(red: 244/255, green: 206/255, blue: 20/255))
-                .clipShape(.capsule)
-                .padding([.horizontal, .top])
             }
-            .navigationDestination(isPresented: $isLoggedIn) {
-                Home()
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: $selectProfileImage) {
+                SelectProfileImage(user: $user)
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                topBar
+            }
+        }
+        .alert(errorMessage, isPresented: $hasError) {
+            Button("Okay") {
+                errorMessage = ""
+                hasError = false
             }
         }
         .onAppear {
-            if UserDefaults.standard.bool(forKey: kIsLoggedIn) {
-                isLoggedIn = true
+            selectProfileImage = false
+        }
+    }
+    
+    private var topBar: some View {
+        Image(.littleLemonLogo)
+            .resizable()
+            .scaledToFit()
+            .frame(height: 35)
+            .padding()
+    }
+    
+    var personalInfoTextFields: some View {
+        VStack(spacing: 16) {
+            Group {
+                TextField("First name*", text: $user.firstName)
+                    .textContentType(.givenName)
+                
+                TextField("Last name*", text: $user.lastName)
+                    .textContentType(.familyName)
+                
+                TextField("Email*", text: $user.email)
+                    .textContentType(.emailAddress)
+                    .keyboardType(.emailAddress)
+                
+                TextField("Phone number", text: $user.phoneNumber)
+                    .textContentType(.telephoneNumber)
+                    .keyboardType(.phonePad)
             }
+            .autocorrectionDisabled()
+            .padding()
+            .background(Color(.secondarySystemBackground))
+            .clipShape(.rect(cornerRadius: 12))
+        }
+        .padding()
+    }
+    
+    private var nextButton: some View {
+        Button {
+            nextButtonAction()
+        } label: {
+            Text("Next")
+                .font(.headline)
+                .foregroundStyle(Color(.dark))
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+        }
+        .padding(.vertical)
+        .frame(maxWidth: .infinity)
+        .background(Color(.primaryYellow))
+        .clipShape(.rect(cornerRadius: 10))
+        .padding([.horizontal, .top])
+    }
+    
+    
+    
+    private func nextButtonAction() {
+        if user.firstName.isEmpty || user.lastName.isEmpty || user.email.isEmpty {
+            errorMessage = "First name, last name, and email are required"
+            hasError = true
+        } else if !validateEmail(user.email) {
+            errorMessage = "Invalid email"
+            hasError = true
+        } else {
+            selectProfileImage.toggle()
         }
     }
     
